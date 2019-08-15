@@ -48,4 +48,4 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 }
 ```
 
-![Screenshot](https://github.com/yassir3wad/nova-modules/raw/master/modules.png)
+![Screenshot](https://raw.githubusercontent.com/yassir3wad/nova-modules/master/modules.PNG)
