@@ -1,7 +1,7 @@
 # Laravel Nova Modules
 
-This package provides ability to manager nova resources and tools, so you can enable and disable any resource or module.
-
+This package provides the ability to manager nova resources and tools, so you can enable and disable any resource or module. Disabling the resource or tool
+means that they will not be accessible anymore.
 ## Installation
 
 Install the package via composer using:
