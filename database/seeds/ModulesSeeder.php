@@ -12,14 +12,21 @@ class ModulesSeeder extends Seeder
      */
     public function run()
     {
-        Module::create([
-            'name' => 'Posts',
-            'class' => App\Nova\Post::class
+        Module::firstOrCreate([
+            'name' => 'Themes',
+            'class' => Yassir3wad\NovaTheme\NovaTheme::class
         ]);
 
-        Module::create([
+        Module::firstOrCreate([
             'name' => 'Settings',
             'class' => Yassir3wad\Settings\SettingsTool::class,
+            'active' => false
+        ]);
+
+        Module::firstOrCreate([
+            'name' => 'Posts',
+            'class' => App\Nova\Post::class,
+        ], [
             'active' => false
         ]);
     }
