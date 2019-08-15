@@ -1,0 +1,38 @@
+{
+  "name": "yassir3wad/nova-modules",
+  "description": "A Laravel Nova tool.",
+  "keywords": [
+    "laravel",
+    "nova",
+    "modules"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=7.1.0",
+    "laravel/framework": "5.8.*",
+    "laravel/nova": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Yassir3wad\\NovaModules\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Yassir3wad\\NovaModules\\ToolServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://nova.laravel.com"
+    }
+  ]
+}
