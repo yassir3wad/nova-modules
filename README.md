@@ -50,10 +50,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 ##  Screenshots
 
 Modules List
-![Modules List](https://raw.githubusercontent.com/yassir3wad/nova-modules/master/screenshots/modules.PNG)
+![Modules List](https://raw.githubusercontent.com/yassir3wad/nova-modules/master/screenshots/modules)
 
 Change Modules Status (active-inactive)
-![Modules List](https://raw.githubusercontent.com/yassir3wad/nova-modules/master/screenshots/change_status.PNG)
+![Modules List](https://raw.githubusercontent.com/yassir3wad/nova-modules/master/screenshots/status.png)
 
 Then Nova looks like
-![Modules List](https://raw.githubusercontent.com/yassir3wad/nova-modules/master/screenshots/result.PNG)
+![Modules List](https://raw.githubusercontent.com/yassir3wad/nova-modules/master/screenshots/results.png)
