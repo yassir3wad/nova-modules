@@ -13,6 +13,10 @@ composer require yassir3wad/nova-moudles
 then publish the `ModulesSeeder` to add your insert your resource and tools into the database.
 
 
+```
+php artisan vendor:publish --provider="Yassir3wad\NovaModules\ToolServiceProvider" --tag=seeds
+```
+
 ## Usage
 
 1. Add the tool into the tools array in your `NovaServiceProvider` class:
