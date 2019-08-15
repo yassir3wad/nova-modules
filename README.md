@@ -47,5 +47,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     }
 }
 ```
+##  Screenshots
 
-![Screenshot](https://raw.githubusercontent.com/yassir3wad/nova-modules/master/modules.PNG)
+Modules List
+![Modules List](https://raw.githubusercontent.com/yassir3wad/nova-modules/master/modules.PNG)
+
+Change Modules Status (active-inactive)
+![Modules List](https://raw.githubusercontent.com/yassir3wad/nova-modules/master/change_status.PNG)
+
+Then Nova looks like
+![Modules List](https://raw.githubusercontent.com/yassir3wad/nova-modules/master/result.PNG)
