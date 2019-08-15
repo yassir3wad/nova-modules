@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Resource;
 use Yassir3wad\NovaModules\Resources\Actions\ModuleAction;
+use Yassir3wad\NovaModules\Resources\Filters\StatusFilter;
 
 class Module extends Resource
 {
@@ -59,12 +60,10 @@ class Module extends Resource
         ];
     }
 
-    /**
-     * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return array
-     */
+    public function filters(Request $request)
+    {
+        return [new StatusFilter()];
+    }
 
     /**
      * Get the actions available for the resource.
