@@ -4,6 +4,7 @@ namespace Yassir3wad\NovaModules\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Nova\Resource;
+use Laravel\Nova\Tool;
 
 class Module extends Model
 {
@@ -23,10 +24,12 @@ class Module extends Model
         parent::boot();
 
         self::saving(function (self $model) {
-            if ($this->class instanceof Resource) {
-                $this->type = self::TYPE_RESOURCE;
+            if (is_subclass_of($model->class, Resource::class)) {
+                $model->type = self::TYPE_RESOURCE;
+            } elseif (is_subclass_of($model->class, Tool::class)) {
+                $model->type = self::TYPE_TOOL;
             } else {
-                $this->type = self::TYPE_TOOL;
+                throw new \Exception("Class {$model->class} is not a resource neither a tool");
             }
         });
     }
@@ -46,4 +49,8 @@ class Module extends Model
         return !$this->active;
     }
 
+    public static function isActiveModule($classOrName)
+    {
+        return self::where("class", $classOrName)->orWhere("name", $classOrName)->value('active');
+    }
 }

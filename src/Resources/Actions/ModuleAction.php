@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\ActionFields;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Laravel\Nova\Fields\Boolean;
+use Yassir3wad\NovaModules\Models\Module;
 
 class ModuleAction extends Action
 {
@@ -25,6 +26,9 @@ class ModuleAction extends Action
      */
     public function handle(ActionFields $fields, Collection $models)
     {
+        Module::whereIn("id", $models->pluck("id")->toArray())->update(['active' => !!$fields->get("is_active")]);
+
+        return self::redirect($this->getRedirectedUrl());
     }
 
     /**
@@ -37,5 +41,11 @@ class ModuleAction extends Action
         return [
             Boolean::make("Is Active")->rules("required", "boolean")
         ];
+    }
+
+    private function getRedirectedUrl()
+    {
+        $novaPath = rtrim(config("nova.path"), "/");
+        return rtrim(config("nova.url"), "/") . ($novaPath ? "/$novaPath" : "") . "/modules";
     }
 }

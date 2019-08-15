@@ -1,8 +1,8 @@
 Nova.booting((Vue, router, store) => {
     router.addRoutes([
         {
-            name: 'nova-modules',
-            path: '/nova-modules',
+            name: 'modules',
+            path: '/modules',
             component: require('./components/Tool'),
             props: {resourceName: 'modules'}
         },

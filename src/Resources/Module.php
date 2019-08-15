@@ -2,10 +2,10 @@
 
 namespace Yassir3wad\NovaModules\Resources;
 
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Status;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Resource;
 use Yassir3wad\NovaModules\Resources\Actions\ModuleAction;
@@ -48,13 +48,14 @@ class Module extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make("Name"),
+            Text::make("Name")->sortable(),
 
-            Text::make("Type"),
+            Text::make("Type")->sortable(),
 
-            Status::make("Active"),
+            Boolean::make('Active')
+                ->sortable(),
 
-            DateTime::make("Last Update", "updated_at"),
+            DateTime::make("Last Update", "updated_at")->sortable(),
         ];
     }
 
