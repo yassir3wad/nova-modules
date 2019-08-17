@@ -53,4 +53,13 @@ class Module extends Model
     {
         return self::where("class", $classOrName)->orWhere("name", $classOrName)->value('active');
     }
+
+    public function isTool()
+    {
+        return $this->type == self::TYPE_TOOL;
+    }
+
+    public function isResource(){
+        return $this->type == self::TYPE_RESOURCE;
+    }
 }

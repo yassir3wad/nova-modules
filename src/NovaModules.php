@@ -13,13 +13,16 @@ class NovaModules extends Tool
      *
      * @return void
      */
+
+    public  $resource = Module::class;
+
     public function boot()
     {
         Nova::script('nova-modules', __DIR__ . '/../dist/js/tool.js');
         Nova::style('nova-modules', __DIR__ . '/../dist/css/tool.css');
 
         Nova::resources([
-            Module::class
+            $this->resource
         ]);
     }
 
@@ -31,5 +34,11 @@ class NovaModules extends Tool
     public function renderNavigation()
     {
         return view('nova-modules::navigation');
+    }
+
+    public function setResource($resource)
+    {
+        $this->resource = $resource;
+        return $this;
     }
 }
