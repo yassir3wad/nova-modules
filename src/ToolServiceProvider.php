@@ -38,6 +38,9 @@ class ToolServiceProvider extends ServiceProvider
 
     public static function eliminateResourcesAndTools()
     {
+        if(!\Schema::hasTable("modules"))
+            return;
+
         $toEliminate = Module::where("active", false)->pluck("class")->toArray();
 
         Nova::serving(function (ServingNova $event) use ($toEliminate) {
