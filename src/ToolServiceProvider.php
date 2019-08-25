@@ -2,6 +2,7 @@
 
 namespace Yassir3wad\NovaModules;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Nova;
@@ -38,8 +39,14 @@ class ToolServiceProvider extends ServiceProvider
 
     public static function eliminateResourcesAndTools()
     {
-        if(!\Schema::hasTable("modules"))
+        try {
+            DB::connection()->getPdo();
+        } catch (\Exception $e) {
             return;
+        }
+
+        if (!\Schema::hasTable("modules"))
+            throw new \Exception("modules table not migrated");
 
         $toEliminate = Module::where("active", false)->pluck("class")->toArray();
 
