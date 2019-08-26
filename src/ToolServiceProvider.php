@@ -40,26 +40,20 @@ class ToolServiceProvider extends ServiceProvider
     public static function eliminateResourcesAndTools()
     {
         try {
-            DB::connection()->getPdo();
+            $toEliminate = Module::where("active", false)->pluck("class")->toArray();
+            Nova::serving(function (ServingNova $event) use ($toEliminate) {
+                Nova::$resources = array_filter(Nova::$resources, function ($resource) use ($toEliminate) {
+                    return !in_array($resource, $toEliminate);
+                });
+
+                Nova::$tools = array_filter(Nova::$tools, function ($tool) use ($toEliminate) {
+                    return !array_filter($toEliminate, function ($eliminate) use ($tool) {
+                        return $tool instanceof $eliminate;
+                    });
+                });
+            });
         } catch (\Exception $e) {
             return;
         }
-
-        if (!\Schema::hasTable("modules"))
-            throw new \Exception("modules table not migrated");
-
-        $toEliminate = Module::where("active", false)->pluck("class")->toArray();
-
-        Nova::serving(function (ServingNova $event) use ($toEliminate) {
-            Nova::$resources = array_filter(Nova::$resources, function ($resource) use ($toEliminate) {
-                return !in_array($resource, $toEliminate);
-            });
-
-            Nova::$tools = array_filter(Nova::$tools, function ($tool) use ($toEliminate) {
-                return !array_filter($toEliminate, function ($eliminate) use ($tool) {
-                    return $tool instanceof $eliminate;
-                });
-            });
-        });
     }
 }
