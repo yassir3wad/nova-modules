@@ -9,7 +9,6 @@
   "license": "MIT",
   "require": {
     "php": ">=7.1.0",
-    "laravel/framework": "5.8.*",
     "laravel/nova": "^2.0"
   },
   "autoload": {
